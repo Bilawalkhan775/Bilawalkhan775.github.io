@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="about"><i class="fas fa-user"></i> About</a>
+        <a href="resume"><i class="fas fa-file-alt"></i> Resume</a>
+        <a href="technologies"><i class="fas fa-cogs"></i> Technologies</a>
+        <a href="certifications"><i class="fas fa-cogs"></i> Certifications</a>
+        <a href="achievements"><i class="fas fa-cogs"></i> Achievements</a>
+        <a href="projects"><i class="fas fa-briefcase"></i> Projects</a>
+        <a href="contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <!-- Avatar Section -->
+            <div class="avatar">
+                <img src="my-avatar.png" alt="Profile Picture">
+            </div>
+        
+            <!-- Name Section -->
+            <div class="name">
+                <h1>Muhammad Bilawal Khan</h1>
+                <p class="info"><span id="dynamic-role">Web Developer</span></p>
+            </div>
+        
+            <!-- Social Icons Section -->
+            <div class="social-icons">
+                <a href="mailto:mbilawalkhan54400@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/Bilawalkhan775" target="_blank" ><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-bilawal-khan-152645251/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        
+
+        <div class="main">
+            
+            <div id="content">
+                <!-- Dynamic Content Will Be Loaded Here -->
+                <h2>Welcome!</h2>
+                <p>Click on the navigation bar to view different pages.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+// List of roles to cycle through
+const roles = ["Web Developer", "Mobile Developer", "Desktop Developer", "Cybersecurity Enthusiast", "Team Lead", "Machine Learning Engineer", "Data Analyst", "Researcher"];
+let roleIndex = 0; // Index to track the current role
+
+// Function to change the role dynamically with smooth transitions
+function changeRole() {
+    const roleElement = document.getElementById("dynamic-role");
+    if (roleElement) {
+        // Add fade-out animation
+        roleElement.classList.add("fade-out");
+
+        // Wait for the fade-out to complete, then update the text
+        setTimeout(() => {
+            roleElement.textContent = roles[roleIndex];
+            roleIndex = (roleIndex + 1) % roles.length; // Move to the next role, loop back to start
+
+            // Add fade-in animation
+            roleElement.classList.remove("fade-out");
+            roleElement.classList.add("fade-in");
+
+            // Remove the fade-in class after the animation is done
+            setTimeout(() => {
+                roleElement.classList.remove("fade-in");
+            }, 500); // Match the fade-in duration
+        }, 500); // Match the fade-out duration
+    }
+}
+
+// Call the function every 3 seconds (3000 milliseconds)
+setInterval(changeRole, 3000);
+
+// Functionality to dynamically update the content
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = e.target.getAttribute('href').replace('#', '');
+        document.getElementById('content').innerHTML = pages[page] || '<h2>Page Not Found</h2>';
+    });
+});
+
+
+
+        const pages = {
+             about: `
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>
+                    Hi, I’m Muhammad Bilawal Khan, a <strong> Software Engineer </strong> from the Balochistan University of Information Technology, Engineering, and Management Sciences (BUITEMS), Quetta. I’m set to graduate in December 2024, bringing a wealth of hands-on industry experience, innovative projects, and rigorous academic achievements.
+                </p>
+                <p>
+                    My journey in tech spans diverse fields, including cybersecurity, mobile app development, and IoT innovation. As a Web Pentesting Intern at Ultrasoft Systems, I explored the depths of cybersecurity, honing my skills in safeguarding systems. On the development front, I’ve created impactful applications as a Flutter and Android Developer, solving real-world problems with meaningful technology.
+                </p>
+                <p>
+                    One of my most notable achievements is the Eye-Smart Helmet Monitoring App, an IoT-powered innovation designed to enhance miner safety by providing real-time monitoring solutions. This project underscores my commitment to using technology to make a difference.
+                </p>
+                <p>
+                    I thrive at the intersection of creativity and technology, constantly challenging myself to push boundaries and deliver solutions that leave a meaningful impact.
+                </p>
+            </div>
+        `
+            ,
+                resume: `
+                <h2>Resume</h2>
+            <div class="timeline">
+
+                <!-- Education Section -->
+                <h3><i class="fas fa-book"></i> Education</h3>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <h4>BS Software Engineering</h4>
+                        <span class="timeline-date">2020 — 2024</span>
+                        <span> BUITEMS </span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <h4>Intermediate Of Computer Science</h4>
+                        <span class="timeline-date">2018 — 2020</span>
+                        <span> FG collage </span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content">
+                        <h4>Matricullation</h4>
+                        <span class="timeline-date">2016 — 2018</span>
+                        <span> FG School </span>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h4>Team Lead</h4>
+                        <span class="timeline-date">Nov 2024 — Present</span>
+                        <span>BISSTC</span>
+                        <p>Led a multidisciplinary team to successfully deliver a project ahead of schedule, ensuring quality outcomes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h4>Web Pentester</h4>
+                        <span class="timeline-date">Sept 2024</span>
+                        <span>Ultrasoft System</span>
+                        <p>Enhanced system security by conducting webpenetration testing, identified vulnerabilities and implemented mitigation strategies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h4>Backend Developer</h4>
+                        <span class="timeline-date">Feb - Aug 2024</span>
+                        <span>MVSol</span>
+                        <p>Developed a Flutter-based mobile application with user-friendly interfaces, increasing customer engagement. Optimized app performance, reducing load times and improving user retention.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h4>Android Developer</h4>
+                        <span class="timeline-date">2023 </span>
+                        <span>Gul Technologies</span>
+                        <p> Designed and implemented the Eye-Smart Helmet monitoring app for miners, visualizing sensor data through dynamic graphs, and improving safety reporting efficiency by 30%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-content">
+                        <h4>ML TAship</h4>
+                        <span class="timeline-date">Aug — Dec 2023</span>
+                        <span>BUITEMS</span>
+                        <p>Guided 30+ students in machine learning concepts and tools, improving their project outcomes.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        `,
+
+        technologies: `
+        <h2>Technologies</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-python"></i></div>
+                <h3>Python</h3>
+                <p>Django (Server-Side), Machine Learning, Deep Learning, Computer Vision, Big Data</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-cuttlefish"></i></div>
+                <h3>C++</h3>
+                <p>Game Development, Backend, Data Structures & Algorithms (DSA)</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-js"></i></div>
+                <h3>JavaScript</h3>
+                <p>Frontend (React.js), Backend (Node.js, Express.js)</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-php"></i></div>
+                <h3>PHP</h3>
+                <p>Backend Web Development</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fab fa-java"></i></div>
+                <h3>Java</h3>
+                <p>Desktop Development (JFrame), Mobile Apps (Kotlin, Flutter)</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-code"></i></div>
+                <h3>Dart</h3>
+                <p>Plotteo</p>
+            </div>
+        </div>  `
+        ,
+        achievements: `
+        <h2>Achievements</h2>
+        <div class="achievement-cards">
+
+            <div class="achievement-card">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3>Red Team Regional Winner</h3>
+                    <p>Ignite Cybersecurity Hackathon 2024</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-flag"></i>
+                <div>
+                    <h3>National Finalist</h3>
+                    <p>Ignite Cybersecurity Hackathon 2023</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-medal"></i>
+                <div>
+                    <h3>Badminton Champion</h3>
+                    <p>FG Public High School 2018</p>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <i class="fas fa-chess"></i>
+                <div>
+                    <h3>Chess Master</h3>
+                    <p>Ranked on Chess.com</p>
+                </div>
+            </div>
+        </div>
+    `,
+    certifications: `
+        <h2>Certifications</h2>
+        <div class="certification-cards">
+            <div class="certification-card">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3><a href="https://coursera.org/specialization/cybersecurity-specialization" target="_blank">Cybersecurity Specialization</a></h3>
+                    <p>Coursera | Google</p>
+                </div>
+            </div>
+            <div class="certification-card">
+                <i class="fas fa-brain"></i>
+                <div>
+                    <h3><a href="https://coursera.org/specialization/machine-learning-specialization" target="_blank">Machine Learning Specialization</a></h3>
+                    <p>Coursera | DeepLearning.AI</p>
+                </div>
+            </div>
+            <div class="certification-card">
+                <i class="fas fa-network-wired"></i>
+                <div>
+                    <h3><a href="https://coursera.org/course/neural-networks-deep-learning" target="_blank">Neural Networks and Deep Learning</a></h3>
+                    <p>Coursera | DeepLearning.AI</p>
+                </div>
+            </div>
+            <div class="certification-card">
+                <i class="fas fa-search"></i>
+                <div>
+                    <h3><a href="https://coursera.org/project/metasploit-penetration-testing" target="_blank">Metasploit | Penetration Testing</a></h3>
+                    <p>Coursera Project Network</p>
+                </div>
+            </div>
+            <div class="certification-card">
+                <i class="fas fa-bug"></i>
+                <div>
+                    <h3><a href="https://coursera.org/project/vulnerability-scanning-nmap" target="_blank">Vulnerability Scanning with Nmap</a></h3>
+                    <p>Coursera Project Network</p>
+                </div>
+            </div>
+            <div class="certification-card">
+                <i class="fas fa-graduation-cap"></i>
+                <div>
+                    <h3>NAVTTC Training</h3>
+                    <p>Computer Networks, SEO & Digital Marketing</p>
+                </div>
+            </div>
+        </div>
+    `
+    ,
+        projects: `
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Alfalah Builders</h3>
+                <p> Built a web portal for managing construction transactions,schemes,and contractor data</p>
+            </div>
+            <div class="project-card">
+                <h3>MVSol Mobile Application</h3>
+                <p>Developed a Flutter-based mobile application with user-friendly interfaces, increasing customer engagement. Optimized app performance, reducing load times by 25% and improving user retention.</p>
+            </div>
+            <div class="project-card">
+                <h3>Gul Technology App</h3>
+                <p>Designed and implemented the Eye-Smart Helmet monitoring app for miners, visualizing sensor data through dynamic graphs, and improving safety reporting efficiency.</p>
+            </div>
+            <div class="project-card">
+                <h3>Global Terrorism Dataset</h3>
+                <p>Analyzed GTD dataset with big data tools, deriving actionable insights for South Asia.</p>
+            </div>
+            <div class="project-card">
+                <h3>Mobile Application Security(Thesis)</h3>
+                <p>analyzed 1000+ android applications to create dataset and identified the vulnerabilities using reverse engineering and machine learning.</p>
+            </div>
+            <div class="project-card">
+                <h3>Stress Detection</h3>
+                <p>Designed and evaluated stress detection models with machine learning algorithms.</p>
+            </div>
+            <div class="project-card">
+                <h3>Database Management System</h3>
+                <p>Automated management of university clubs and councils through a centralized platform.</p>
+            </div>
+            <div class="project-card">
+                <h3>Bank Management System</h3>
+                <p>A tool for seamless integration of third-party APIs to enhance functionality and improve user experience.</p>
+            </div>
+            <div class="project-card">
+                <h3>OOP Game</h3>
+                <p>Created a modular snake game in C++ using object-oriented design principles.</p>
+            </div>
+            <div class="project-card">
+                <h3>JEdit ReEngineering </h3>
+                <p>Enhanced Java compiler by adding modules and re-engineering core system features.</p>
+            </div>
+            <div class="project-card">
+                <h3>Comprehensive Network Simulation </h3>
+                <p>Implemented secure hospital networks with VLAN, STP, and port security configurations.</p>
+            </div>
+        </div>`,
+            contact: `
+        <div class="contact-content">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me using the following details:</p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+923443286483" target="_blank">Phone</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/Bilawalkhan775" target="_blank">GitHub</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/muhammad-bilawal-khan-152645251/" target="_blank">LinkedIn</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:mbilawalkhan54400@gmail.com">Email</a></p>
+            <p><i class="fas fa-globe"></i> <a href="https://personalwebsite.com" target="_blank">Personal Website</a></p>
+        </div>
+             `
+        };
+    
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = e.target.getAttribute('href');
+                document.getElementById('content').innerHTML = pages[page] || '<h2>Page Not Found</h2>';
+            });
+        });
+        
+    </script>
+</body>
+</html>
+
