@@ -411,9 +411,13 @@ document.querySelectorAll('.navbar a').forEach(link => {
                 document.getElementById('content').innerHTML = pages[page] || '<h2>Page Not Found</h2>';
             });
         });
+        // Load About page by default on first load
+document.getElementById('content').innerHTML = pages.about;
+
         
     </script>
 </body>
 </html>
+
 
 
